@@ -1,0 +1,17 @@
+reload
+compile
+publishLocal
+compile
+publishLocal
+~publishLocal
+~compile;publishLocal
+publishLocal
+compile
+publishLocal
+~publishLocal
+publishLocal
+compile
+publishLocal
+~publishLocal
+publishLocal
+~publishLocal

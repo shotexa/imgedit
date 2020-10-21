@@ -1,0 +1,4 @@
+[debug] [imgedit-test] Classpath dependencies List()
+[debug] [imgedit-test] Dependencies from configurations List(imgedit)
+[debug] Bloop wrote the configuration of project 'imgedit-test' to '/Users/shota/code/scala/imgedit/.bloop/imgedit-test.json'
+[success] Generated .bloop/imgedit-test.json

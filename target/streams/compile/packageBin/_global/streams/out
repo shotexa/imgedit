@@ -1,0 +1,25 @@
+[0m[[0m[0mdebug[0m] [0m[0mPackaging /Users/shota/code/scala/imgedit/target/scala-2.13/imgedit_2.13-0.0.1-SNAPSHOT.jar ...[0m
+[0m[[0m[0mdebug[0m] [0m[0mInput file mappings:[0m
+[0m[[0m[0mdebug[0m] [0m[0m	com[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  /Users/shota/code/scala/imgedit/target/scala-2.13/classes/com[0m
+[0m[[0m[0mdebug[0m] [0m[0m	com/shotexa[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  /Users/shota/code/scala/imgedit/target/scala-2.13/classes/com/shotexa[0m
+[0m[[0m[0mdebug[0m] [0m[0m	com/shotexa/imgedit[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  /Users/shota/code/scala/imgedit/target/scala-2.13/classes/com/shotexa/imgedit[0m
+[0m[[0m[0mdebug[0m] [0m[0m	com/shotexa/imgedit/Filter$.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  /Users/shota/code/scala/imgedit/target/scala-2.13/classes/com/shotexa/imgedit/Filter$.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	com/shotexa/imgedit/package$.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  /Users/shota/code/scala/imgedit/target/scala-2.13/classes/com/shotexa/imgedit/package$.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	com/shotexa/imgedit/Effect$.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  /Users/shota/code/scala/imgedit/target/scala-2.13/classes/com/shotexa/imgedit/Effect$.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	com/shotexa/imgedit/Effect.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  /Users/shota/code/scala/imgedit/target/scala-2.13/classes/com/shotexa/imgedit/Effect.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	com/shotexa/imgedit/ARGB$.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  /Users/shota/code/scala/imgedit/target/scala-2.13/classes/com/shotexa/imgedit/ARGB$.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	com/shotexa/imgedit/Filter.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  /Users/shota/code/scala/imgedit/target/scala-2.13/classes/com/shotexa/imgedit/Filter.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	com/shotexa/imgedit/package.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  /Users/shota/code/scala/imgedit/target/scala-2.13/classes/com/shotexa/imgedit/package.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	com/shotexa/imgedit/ARGB.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  /Users/shota/code/scala/imgedit/target/scala-2.13/classes/com/shotexa/imgedit/ARGB.class[0m
+[0m[[0m[0mdebug[0m] [0m[0mDone packaging.[0m

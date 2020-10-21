@@ -1,0 +1,16 @@
+[0m[[0m[31merror[0m] [0m[0m/Users/shota/code/scala/imgedit/src/main/scala/com/shotexa/imgedit/Effect.scala:321:42: type mismatch;[0m
+[0m[[0m[31merror[0m] [0m[0m found   : Float[0m
+[0m[[0m[31merror[0m] [0m[0m required: Int[0m
+[0m[[0m[31merror[0m] [0m[0m      val newColor = assembleRgb(ARGB(a, newR, newG, newB))[0m
+[0m[[0m[31merror[0m] [0m[0m                                         ^[0m
+[0m[[0m[31merror[0m] [0m[0m/Users/shota/code/scala/imgedit/src/main/scala/com/shotexa/imgedit/Effect.scala:321:48: type mismatch;[0m
+[0m[[0m[31merror[0m] [0m[0m found   : Float[0m
+[0m[[0m[31merror[0m] [0m[0m required: Int[0m
+[0m[[0m[31merror[0m] [0m[0m      val newColor = assembleRgb(ARGB(a, newR, newG, newB))[0m
+[0m[[0m[31merror[0m] [0m[0m                                               ^[0m
+[0m[[0m[31merror[0m] [0m[0m/Users/shota/code/scala/imgedit/src/main/scala/com/shotexa/imgedit/Effect.scala:321:54: type mismatch;[0m
+[0m[[0m[31merror[0m] [0m[0m found   : Float[0m
+[0m[[0m[31merror[0m] [0m[0m required: Int[0m
+[0m[[0m[31merror[0m] [0m[0m      val newColor = assembleRgb(ARGB(a, newR, newG, newB))[0m
+[0m[[0m[31merror[0m] [0m[0m                                                     ^[0m
+[0m[[0m[31merror[0m] [0m[0mthree errors found[0m
