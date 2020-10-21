@@ -1,11 +1,1 @@
-[0m[[0m[0mdebug[0m] [0m[0mPackaging /Users/shota/code/scala/imgedit/target/scala-2.13/imgedit_2.13-0.0.1-SNAPSHOT-sources.jar ...[0m
-[0m[[0m[0mdebug[0m] [0m[0mInput file mappings:[0m
-[0m[[0m[0mdebug[0m] [0m[0m	com/shotexa/imgedit/Entities.scala[0m
-[0m[[0m[0mdebug[0m] [0m[0m	  /Users/shota/code/scala/imgedit/src/main/scala/com/shotexa/imgedit/Entities.scala[0m
-[0m[[0m[0mdebug[0m] [0m[0m	com/shotexa/imgedit/Effect.scala[0m
-[0m[[0m[0mdebug[0m] [0m[0m	  /Users/shota/code/scala/imgedit/src/main/scala/com/shotexa/imgedit/Effect.scala[0m
-[0m[[0m[0mdebug[0m] [0m[0m	com/shotexa/imgedit/package.scala[0m
-[0m[[0m[0mdebug[0m] [0m[0m	  /Users/shota/code/scala/imgedit/src/main/scala/com/shotexa/imgedit/package.scala[0m
-[0m[[0m[0mdebug[0m] [0m[0m	com/shotexa/imgedit/Filter.scala[0m
-[0m[[0m[0mdebug[0m] [0m[0m	  /Users/shota/code/scala/imgedit/src/main/scala/com/shotexa/imgedit/Filter.scala[0m
-[0m[[0m[0mdebug[0m] [0m[0mDone packaging.[0m
+[0m[[0m[0mdebug[0m] [0m[0mJar uptodate: /Users/shota/code/scala/imgedit/target/scala-2.13/imgedit_2.13-0.0.1-SNAPSHOT-sources.jar[0m

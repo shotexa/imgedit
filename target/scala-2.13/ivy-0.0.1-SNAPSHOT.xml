@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ivy-module version="2.0" xmlns:e="http://ant.apache.org/ivy/extra">
-  <info organisation="com.shotexa" module="imgedit_2.13" revision="0.0.1-SNAPSHOT" status="integration" publication="20201021040254">
+  <info organisation="com.shotexa" module="imgedit_2.13" revision="0.0.1-SNAPSHOT" status="integration" publication="20201021042718">
     <description>imgedit</description>
   </info>
   <configurations>
