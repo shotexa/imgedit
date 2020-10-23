@@ -11,8 +11,14 @@ import java.awt.Color
 import collection.mutable.{Set => MutSet, ArrayDeque}
 import java.awt.image.ConvolveOp
 import java.awt.image.Kernel
+import scala.concurrent.Future
+import scala.concurrent.ExecutionContext.Implicits.global
+import scala.concurrent.ExecutionContext
+import Implicits._
 
-class EditableImage(image: BufferedImage) {
+class EditableImage(image: BufferedImage) extends Editable with EditableMut {
+
+  override type Self = EditableImage
 
   def this(file: File) = {
     this(ImageIO.read(file))
@@ -22,6 +28,8 @@ class EditableImage(image: BufferedImage) {
     this(ImageIO.read(stream))
   }
 
+  def toBufferedImage: BufferedImage = image
+
   /**
     * flood fills the <code>EditableImage</code> with the given <code>fillColor</code>
     * starting from the <code>coordinates</code>.
@@ -29,9 +37,12 @@ class EditableImage(image: BufferedImage) {
     *
     * @param coordinates
     * @param fillColor
-    * @return <code>BufferedImage</code>
+    * @return <code>EditableImage</code>
     */
-  def floodFilled(coordinates: (Int, Int), fillColor: Color): BufferedImage =
+  override def floodFilled(
+      coordinates: (Int, Int),
+      fillColor: Color
+  ): Self =
     EditableImage.floodFilled(coordinates, image, fillColor)
 
   /**
@@ -40,36 +51,38 @@ class EditableImage(image: BufferedImage) {
     *
     * @param coordinates
     * @param fillColor
-    * @return <code>BufferedImage</code>
+    * @return <code>EditableImage</code>
     */
-  def floodFillInPlace(
+  override def floodFillInPlace(
       coordinates: (Int, Int),
       fillColor: Color
-  ): BufferedImage =
+  ): Self =
     EditableImage.floodFillInPlace(coordinates, image, fillColor)
 
   /**
     * Turns a colored <code>EditableImage</code> into a black and white one.
     *
-    * @return <code>BufferedImage</code>
+    * @return <code>EditableImage</code>
     */
-  def grayScaled: BufferedImage = EditableImage.grayScaled(image)
+  override def grayScaled: Self =
+    EditableImage.grayScaled(image)
 
   /**
     * Turns a colored <code>EditableImage</code> into a black and white one.
     *
-    * @return <code>BufferedImage</code>
+    * @return <code>EditableImage</code>
     */
-  def grayScaleInPlace: BufferedImage = EditableImage.grayScaleInPlace(image)
+  override def grayScaleInPlace: Self =
+    EditableImage.grayScaleInPlace(image)
 
   /**
     * Applies a box blur to a <code>EditableImage</code> with a given <code>intensity</code>
     * Does not mutate the image
     *
     * @param intensity
-    * @return <code>BufferedImage</code>
+    * @return <code>EditableImage</code>
     */
-  def boxBlurred(intensity: Int): BufferedImage =
+  override def boxBlurred(intensity: Int): Self =
     EditableImage.boxBlurred(image, intensity)
 
   /**
@@ -77,9 +90,9 @@ class EditableImage(image: BufferedImage) {
     *
     * @param image
     * @param intensity
-    * @return <code>BufferedImage</code>
+    * @return <code>EditableImage</code>
     */
-  def boxBlurInPlace(intensity: Int): BufferedImage =
+  override def boxBlurInPlace(intensity: Int): Self =
     EditableImage.boxBlurInPlace(image, intensity)
 
   /**
@@ -87,18 +100,18 @@ class EditableImage(image: BufferedImage) {
     * Does not mutate the image
     *
     * @param intensity
-    * @return <code>BufferedImage</code>
+    * @return <code>EditableImage</code>
     */
-  def sharpened(intensity: Int): BufferedImage =
+  override def sharpened(intensity: Int): Self =
     EditableImage.sharpened(image, intensity)
 
   /**
     * Sharpens the <code>EditableImage</code> with a given <code>intensity</code>
     *
     * @param intensity
-    * @return <code>BufferedImage</code>
+    * @return <code>EditableImage</code>
     */
-  def sharpenInPlace(intensity: Int): BufferedImage =
+  override def sharpenInPlace(intensity: Int): Self =
     EditableImage.sharpenInPlace(image, intensity)
 
   /**
@@ -107,11 +120,11 @@ class EditableImage(image: BufferedImage) {
     * Does not mutate the image.
     *
     * @param changePercentage
-    * @return <code>BufferedImage</code>
+    * @return <code>EditableImage</code>
     */
-  def changedBrightness(
+  override def changedBrightness(
       changePercentage: Int
-  ): BufferedImage = {
+  ): Self = {
     val newImage = copyImage(image)
     EditableImage.changedBrightness(image, changePercentage)
   }
@@ -121,11 +134,11 @@ class EditableImage(image: BufferedImage) {
     * positive percentage will make the image brighter, and negative dimmer.
     *
     * @param changePercentage
-    * @return <code>BufferedImage</code>
+    * @return <code>EditableImage</code>
     */
-  def changeBrightnessInPlace(
+  override def changeBrightnessInPlace(
       changePercentage: Int
-  ): BufferedImage =
+  ): Self =
     EditableImage.changeBrightnessInPlace(image, changePercentage)
 
   /**
@@ -133,30 +146,60 @@ class EditableImage(image: BufferedImage) {
     * Does not mutate the image
     *
     * @param intensity
-    * @return <code>BufferedImage</code>
+    * @return <code>EditableImage</code>
     */
-  def changedContrast(
+  override def changedContrast(
       intensity: Int
-  ): BufferedImage = EditableImage.changedContrast(image, intensity)
+  ): Self =
+    EditableImage.changedContrast(image, intensity)
 
   /**
     * Increase or decrease the contrast of the <code>EditableImage</code> based on the given <code>intensity</code>.
     *
     * @param intensity
-    * @return <code>BufferedImage</code>
+    * @return <code>EditableImage</code>
     */
-  def changeContrastInPlace(
+  override def changeContrastInPlace(
       intensity: Int
-  ): BufferedImage = EditableImage.changeContrastInPlace(image, intensity)
+  ): Self =
+    EditableImage.changeContrastInPlace(image, intensity)
+
+  def editView = new EditableImageView(image)
+
 }
 
-object EditableImage extends Editable with EditableMut {
+object EditableImage {
 
   def apply(image: BufferedImage) = new EditableImage(image)
   def apply(image: File)          = new EditableImage(image)
   def apply(image: InputStream)   = new EditableImage(image)
 
-  def fromUrl(url: URL): Future[EditableImage] = ???
+  /**
+    * Get <code>EditableImage</code> from remote URL
+    *
+    * @param url
+    * @return <code>Future[EditableImage]</code>
+    */
+  def fromUrl(
+      url: String
+  ): Future[EditableImage] =
+    Future {
+      val url0 = new URL(url)
+      val conn = url0.openConnection
+      conn.setRequestProperty(
+        "User-Agent",
+        "Mozilla ..."
+      )
+      val stream = conn.getInputStream
+      val image  = ImageIO.read(stream)
+      stream.close()
+
+      image
+    }
+
+  final implicit def editableImageToBufferedImage(
+      ei: EditableImage
+  ): BufferedImage = ei.toBufferedImage
 
   /**
     * flood fills the <code>image</code> with the given <code>fillColor</code>
@@ -342,7 +385,7 @@ object EditableImage extends Editable with EditableMut {
       * [-1 -1 -1]
       * [-1  9 -1]
       * [-1 -1 -1]
-      * sum of all values should be 1 to not change brightness of the image
+      * sum of all values should be 1 to not change the overall brightness of the image
       * reducing or increasing sharpening is performed by reducing or increasing intensity
       * which changes the distribution in the matrix towards lesser central value and higher side values
       * for example: intensity of 10 gives
@@ -489,7 +532,7 @@ object EditableImage extends Editable with EditableMut {
     */
   def changedContrast(
       image: BufferedImage,
-      intensity: Int = 1
+      intensity: Int
   ): BufferedImage = {
     val newImage = copyImage(image)
     changeContrast(image, intensity)
@@ -504,7 +547,7 @@ object EditableImage extends Editable with EditableMut {
     */
   def changeContrastInPlace(
       image: BufferedImage,
-      intensity: Int = 1
+      intensity: Int
   ): BufferedImage = changeContrast(image, intensity)
 
 }

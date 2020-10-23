@@ -6,4 +6,8 @@ object Implicits {
   implicit def bufferedImage2EditableImage(bi: BufferedImage): EditableImage =
     EditableImage(bi)
 
+  implicit class BufferedImageOps(bi: BufferedImage) {
+    def toEditableImage: EditableImage = bufferedImage2EditableImage(bi)
+  }
+
 }
