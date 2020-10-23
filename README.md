@@ -113,8 +113,8 @@ val imageView = ImageIO
                 .grayScaled
                 .boxBlurred(20)
 
-val editedImage:  EditableImage         = newImage.run      // runs chained operations in current thread
-val editedImage2: Future[EditableImage] = newImage.asFuture // runs chained operations in another thread
+val editedImage:  EditableImage         = imageView.run      // runs chained operations in current thread
+val editedImage2: Future[EditableImage] = imageView.asFuture // runs chained operations in another thread
 
 ```
 
