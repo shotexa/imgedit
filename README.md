@@ -118,9 +118,11 @@ newImage.asFuture // runs chained operations in another thread
 
 Every operations has it's mutable and immutable version, here is the list of all possible operations
 
-| Description   | Mutable       | Immutable  |
-| ------------- |:-------------:| -----:     |
-| col 3 is      | right-aligned | $1600      |
-| col 2 is      | centered      |   $12      |
-| zebra stripes | are neat      |    $1      |
-
+| Description                                                                                                                                   | Mutable                   | Immutable           |
+|-----------------------------------------------------------------------------------------------------------------------------------------------|---------------------------|---------------------|
+| flood fills the image with the given color starting from the given coordinates                                                                | `floodFillInPlace`        | `floodFilled`       |
+| Turns a colored image into a black and white one                                                                                              | `grayScaleInPlace`        | `grayScaled`        |
+| Applies a box blur to an image with a given intensity                                                                                         | `boxBlurInPlace`          | `boxBlurred`        |
+| Sharpens the image with a given intensity                                                                                                     | `sharpenInPlace`          | `sharpened`         |
+| changes the brightness of the image based on the given percentage. the positive percentage will make the image brighter, and negative dimmer. | `changeBrightnessInPlace` | `changedBrightness` |
+| Increase or decrease the contrast of the image based on the given intensity                                                                   | `changeContrastInPlace`   | `changedContrast`   |
