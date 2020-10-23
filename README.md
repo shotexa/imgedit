@@ -94,6 +94,11 @@ import javax.imageio.ImageIO
 
 ```
 
+Before                                      |  After
+:------------------------------------------:|:-------------------------:
+![Before](https://i.imgur.com/Q2ss2Eu.jpg)  |![After](https://i.imgur.com/qSxD0Gg.png) 
+
+
 Sometimes you might want to chain multiply operations for later execution, you can use `EditableImageView` for that
 
 Note: <em>`EditableImageView` only supports immutable operations</em>
