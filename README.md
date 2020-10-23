@@ -94,22 +94,22 @@ import javax.imageio.ImageIO
 
 ```
 
-Sometimes you might want to chain multiply operations for later execution, and run them later, you can use `EditableImageView` for that
+Sometimes you might want to chain multiply operations for later execution, you can use `EditableImageView` for that
 
-Note: `EditableImageView` only supports immutable operations
+Note: <em>`EditableImageView` only supports immutable operations</em>
 
 ```scala
 import com.shotexa.imgedit.EditableImage
 import javax.imageio.ImageIO
 
-val newImage = ImageIO
+val imageView = ImageIO
                 .read(inPath)
                 .editView // returns a view
                 .grayScaled
                 .boxBlurred(20)
 
-newImage.run      // runs chained operations in current thread
-newImage.asFuture // runs chained operations in another thread
+val editedImage:  EditableImage         = newImage.run      // runs chained operations in current thread
+val editedImage2: Future[EditableImage] = newImage.asFuture // runs chained operations in another thread
 
 ```
 
