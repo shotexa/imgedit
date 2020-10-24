@@ -8,7 +8,6 @@ libraryDependencies += "com.shotexa" %% "imgedit" % "0.0.1"
 
 # Usage
 
-## EditableImage
 
 The main utility class is `com.shotexa.imgedit.EditableImage`, through which you will access the API
 
@@ -80,12 +79,14 @@ It is possible to instantiate an `EditableImage` from a remote url
 ```scala
 import com.shotexa.imgedit.EditableImage
 import javax.imageio.ImageIO
+import scala.concurrent.ExecutionContext.Implicits.global
+import java.io.File
 
 ...
 
  EditableImage
       .fromUrl(
-        "https://www.petpaw.com.au/wp-content/uploads/2012/09/abyssinian-cat-3.jpg"
+        "https://i.imgur.com/x7vsDXZ.jpg"
       )
       .map(_.grayScaled)
       .map(_.boxBlurred(10))
@@ -96,7 +97,7 @@ import javax.imageio.ImageIO
 
 Before                                      |  After
 :------------------------------------------:|:-------------------------:
-![Before](https://i.imgur.com/Q2ss2Eu.jpg)  |![After](https://i.imgur.com/qSxD0Gg.png) 
+![Before](https://i.imgur.com/x7vsDXZ.jpg)  |![After](https://i.imgur.com/H8iEYGW.png) 
 
 
 Sometimes you might want to chain multiply operations for later execution, you can use `EditableImageView` for that
@@ -110,13 +111,17 @@ import javax.imageio.ImageIO
 val imageView = ImageIO
                 .read(inPath)
                 .editView // returns a view
-                .grayScaled
-                .boxBlurred(20)
+                .changedBrightness(20)
+                .sharpened(5)
 
 val editedImage:  EditableImage         = imageView.run      // runs chained operations in current thread
 val editedImage2: Future[EditableImage] = imageView.asFuture // runs chained operations in another thread
 
 ```
+Before                                      |  After
+:------------------------------------------:|:-------------------------:
+![Before](https://i.imgur.com/j8NiGcB.jpg)  |![After](https://i.imgur.com/KiC4Xop.png) 
+
 
 
 ## Mutable and Immutable operations
